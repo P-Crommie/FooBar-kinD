@@ -45,10 +45,13 @@ jobs:
             - name: Deploy Ingress Controller
               run: bash install_ingress.sh
 
+            - name: Deploy FooBar
+              run : bash install_foobar.sh
+
             - name: Test
               run: |
                 sleep 40
-                kubectl get pod -n ingress
+                kubectl get pod -n http-echo
 
 
 
