@@ -46,7 +46,7 @@ jobs:
               run: bash install_ingress.sh
 
             - name: Deploy FooBar
-              run : bash install_foobar.sh
+              run : bash deploy_foobar.sh
 
             - name: Test
               run: |
