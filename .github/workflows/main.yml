@@ -51,10 +51,22 @@ jobs:
             - name: Setup metalLB
               run: bash setup_metalLB.sh
 
+            - name: Grace Period
+              run : sleep 40
+
+            - name: Update hosts file with foo && bar hostnames
+              run: bash update_hostsfile.sh
+
             - name: Test
               run: |
-                sleep 40
+                cat /etc/hosts
+                kubectl get pod -n http-echo
+                kubectl get service -n http-echo
+                kubectl get ingress -n http-echo
+                kubectl get pod -n ingress
+                kubectl get service -n ingress
                 kubectl get pod -n metallb-system
+
 
 
 
