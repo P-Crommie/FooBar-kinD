@@ -1,0 +1,8 @@
+fullnameOverride: ingress-controller
+
+controller:
+  publishService:
+    enabled: true
+    
+rbac:
+  create: true

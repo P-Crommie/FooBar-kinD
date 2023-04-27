@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  echo-bar
+  labels:
+    app:  bar
+spec:
+  selector:
+    matchLabels:
+      app: bar
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  bar
+    spec:
+      containers:
+      - name:  bar
+        image:  hashicorp/http-echo
+        args: ['-listen=:5678', '-text="bar"']
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort:  5678
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-bar-svc
+spec:
+  selector:
+    app: bar
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 5678
