@@ -54,7 +54,7 @@ jobs:
             - name: Grace Period
               run : sleep 40
 
-            - name: Update hosts file with foo && bar hostnames
+            - name: Update hosts file with hostnames
               run: bash update_hostsfile.sh
 
             - name: Test
@@ -66,6 +66,11 @@ jobs:
                 kubectl get pod -n ingress
                 kubectl get service -n ingress
                 kubectl get pod -n metallb-system
+
+            - name: Test Deployment
+              run : |
+                curl foo.localhost
+                curl bar.localhost
 
 
 
