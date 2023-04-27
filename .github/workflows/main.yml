@@ -42,8 +42,11 @@ jobs:
             - name: Create KinD Cluster
               run:  kind create cluster --config kindCluster/config.yml
 
+            - name: Deploy Ingress Controller
+              run: bash install_ingress.sh
+
             - name: Test
-              run: helm version
+              run: kubectl get pod -n ingress
 
 
 
