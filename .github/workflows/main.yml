@@ -46,7 +46,9 @@ jobs:
               run: bash install_ingress.sh
 
             - name: Test
-              run: kubectl get pod -n ingress
+              run: |
+                sleep 10
+                kubectl get pod -n ingress
 
 
 
