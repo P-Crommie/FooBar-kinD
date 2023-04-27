@@ -7,6 +7,6 @@ kubectl wait --namespace metallb-system \
                 --selector=app=metallb \
                 --timeout=90s
 
-network inspect -f '{{.IPAM.Config}}' kind
+docker network inspect -f '{{.IPAM.Config}}' kind
 
 kubectl apply -f LB/metalLB.yml
