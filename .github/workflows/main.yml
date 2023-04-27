@@ -47,7 +47,7 @@ jobs:
 
             - name: Test
               run: |
-                sleep 10
+                sleep 40
                 kubectl get pod -n ingress
 
 
