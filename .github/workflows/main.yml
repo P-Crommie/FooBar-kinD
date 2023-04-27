@@ -48,10 +48,13 @@ jobs:
             - name: Deploy FooBar
               run : bash deploy_foobar.sh
 
+            - name: Setup metalLB
+              run: bash setup_metalLB.sh
+
             - name: Test
               run: |
                 sleep 40
-                kubectl get pod -n http-echo
+                kubectl get pod -n metallb-system
 
 
 
