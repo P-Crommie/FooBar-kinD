@@ -43,19 +43,19 @@ jobs:
               run:  kind create cluster --config kindCluster/config.yml
 
             - name: Deploy Ingress Controller
-              run: bash install_ingress.sh
+              run: bash .github/scripts/install_ingress.sh
 
             - name: Deploy FooBar
-              run : bash deploy_foobar.sh
+              run : bash .github/scripts/deploy_foobar.sh
 
             - name: Setup metalLB
-              run: bash setup_metalLB.sh
+              run: bash .github/scripts/setup_metalLB.sh
 
             - name: Grace Period
               run : sleep 40
 
             - name: Update hosts file with hostnames
-              run: bash update_hostsfile.sh
+              run: bash .github/scripts/update_hostsfile.sh
 
             - name: Test Deployment
               run : |
