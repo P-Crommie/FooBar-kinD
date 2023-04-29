@@ -21,24 +21,6 @@ jobs:
             - name: Setup Docker
               uses: docker/setup-qemu-action@v2
 
-            - name: Install KinD
-              run: |
-                curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.18.0/kind-linux-amd64
-                chmod +x ./kind
-                sudo mv ./kind /usr/local/bin/kind
-            
-            - name: Install Kubectl
-              run: |
-                curl -LO https://dl.k8s.io/release/v1.27.0/bin/linux/amd64/kubectl
-                sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-
-            - name: Install Helm
-              run: |
-                curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-                chmod 700 get_helm.sh
-                ./get_helm.sh
-                rm get_helm.sh
-
             - name: Create KinD Cluster
               run:  kind create cluster --config kindCluster/config.yml
 
